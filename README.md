@@ -23,3 +23,4 @@ Example commit message:
 
 FAKE
 FAKE2
+BREAKING
