@@ -21,3 +21,4 @@ Example commit message:
 - `perf(pencil): remove graphiteWidth option`
 - [more info](https://github.com/semantic-release/semantic-release#commit-message-format)
 
+FAKE
