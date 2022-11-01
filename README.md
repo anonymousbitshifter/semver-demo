@@ -22,3 +22,4 @@ Example commit message:
 - [more info](https://github.com/semantic-release/semantic-release#commit-message-format)
 
 FAKE
+FAKE2
