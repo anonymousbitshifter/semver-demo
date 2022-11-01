@@ -1,0 +1,35 @@
+name: CI
+
+# Controls when the workflow will run
+on:
+  push:
+    branches:
+      - '**'
+  pull_request:
+    types: [opened, reopened]
+    branches:
+      - '**'
+
+jobs:
+  semver:
+    name: Create version tag and github release
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    outputs:
+      tag_name: ${{ steps.semantic_release_info.outputs.git_tag }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Setup Node
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+      - name: Install dependencies
+        run: npm install
+      - name: Version and Github Release
+        id: semantic_release_info
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: npx semantic-release
